@@ -46,23 +46,15 @@ pkgs.mkShell rec {
       gcovr
     ]);
 
-  shellHook = ''
-    if [[ ! -d .west ]]; then
-      west init
-      # west espressif install
-    endif
-    west update
-    # west espressif update
-  '';
-
   LD_LIBRARY_PATH = "${makeLibraryPath buildInputs}";
 
+  #ESP32:
   #ZEPHYR_TOOLCHAIN_VARIANT="espressif";
   #ESPRESSIF_TOOLCHAIN_PATH="~/.espressif/tools/xtensa-esp32-elf/esp-2020r3-8.4.0/xtensa-esp32-elf";
   #PATH="$PATH:${ESPRESSIF_TOOLCHAIN_PATH}/bin";
 
+  #adafruit feather stm32f405:
   ZEPHYR_TOOLCHAIN_VARIANT = "gnuarmemb";
   GNUARMEMB_TOOLCHAIN_PATH = toolchain;
-
-  # ZEPHYR_TOOLCHAIN_VARIANT = "zephyr";
+  BOARD = "adafruit_feather_stm32f405";
 }
