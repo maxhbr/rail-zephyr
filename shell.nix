@@ -27,6 +27,7 @@ pkgs.mkShell rec {
       gperf
       docutils
       openocd
+      dfu-util
     ])++
     (with pkgs.python3Packages; [
       west
@@ -57,4 +58,5 @@ pkgs.mkShell rec {
   ZEPHYR_TOOLCHAIN_VARIANT = "gnuarmemb";
   GNUARMEMB_TOOLCHAIN_PATH = toolchain;
   BOARD = "adafruit_feather_stm32f405";
+  DSHIELD = "st7789v_generic";
 }
